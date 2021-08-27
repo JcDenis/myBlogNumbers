@@ -3,7 +3,7 @@
 #
 # This file is part of myBlogNumbers, a plugin for Dotclear 2.
 # 
-# Copyright (c) 2009-2015 Jean-Christian Denis and contributors
+# Copyright (c) 2009-2021 Jean-Christian Denis and contributors
 # 
 # Licensed under the GPL version 2.0 license.
 # A copy of this license is available in LICENSE file or at
@@ -12,143 +12,120 @@
 # -- END LICENSE BLOCK ------------------------------------
 
 if (!defined('DC_RC_PATH')) {
-
-	return null;
+    return null;
 }
 
 $core->addBehavior('initWidgets', 'myBlogNumbersWidgetAdmin');
 
 function myBlogNumbersWidgetAdmin($w)
 {
-	global $core;
+    global $core;
 
-	$w->create(
-		'myblognumbers',
-		__('My blog numbers'),
-		'myBlogNumbersWidgetPublic',
-		null,
-		__('Show some figures of your blog')
-	);
-	$w->myblognumbers->setting(
-		'title',
-		__('Title:'),
-		__('My blog numbers'),
-		'text'
-	);
+    $w
+        ->create(
+            'myblognumbers',
+            __('My blog numbers'),
+            'myBlogNumbersWidgetPublic',
+            null,
+            __('Show some figures of your blog')
+        )
+        ->addTitle(__('My blog numbers'))
 
-	# Entry
-	$w->myblognumbers->setting(
-		'entry_show',
-		__('Show entries count'),
-		1,
-		'check'
-	);
-	$w->myblognumbers->setting(
-		'entry_title',
-		__('Title for entries count:'),
-		__('Entries:'),
-		'text'
-	);
+        # Entry
+        ->setting(
+            'entry_show',
+            __('Show entries count'),
+            1,
+            'check'
+        )
+        ->setting(
+            'entry_title',
+            __('Title for entries count:'),
+            __('Entries:'),
+            'text'
+        )
 
-	# Cat
-	$w->myblognumbers->setting(
-		'cat_show',
-		__('Show categories count'),
-		1,
-		'check'
-	);
-	$w->myblognumbers->setting(
-		'cat_title',
-		__('Title for categories count:'),
-		__('Categories:'),
-		'text'
-	);
+        # Cat
+        ->setting(
+            'cat_show',
+            __('Show categories count'),
+            1,
+            'check'
+        )
+        ->setting(
+            'cat_title',
+            __('Title for categories count:'),
+            __('Categories:'),
+            'text'
+        )
 
-	# Comment
-	$w->myblognumbers->setting(
-		'comment_show',
-		__('Show comments count'),
-		1,
-		'check'
-	);
-	$w->myblognumbers->setting(
-		'comment_title',
-		__('Title for comments count:'),
-		__('Comments:'),
-		'text'
-	);
+        # Comment
+        ->setting(
+            'comment_show',
+            __('Show comments count'),
+            1,
+            'check'
+        )
+        ->setting(
+            'comment_title',
+            __('Title for comments count:'),
+            __('Comments:'),
+            'text'
+        )
 
-	# Trackback
-	$w->myblognumbers->setting(
-		'trackback_show',
-		__('Show trackbacks count'),
-		1,
-		'check'
-	);
-	$w->myblognumbers->setting(
-		'trackback_title',
-		__('Title for trackbacks count:'),
-		__('Trackbacks:'),
-		'text'
-	);
+        # Trackback
+        ->setting(
+            'trackback_show',
+            __('Show trackbacks count'),
+            1,
+            'check'
+        )
+        ->setting(
+            'trackback_title',
+            __('Title for trackbacks count:'),
+            __('Trackbacks:'),
+            'text'
+        );
 
-	if ($core->plugins->moduleExists('tags')) {
-		# Tag
-		$w->myblognumbers->setting(
-			'tag_show',
-			__('Show tags count'),
-			1,
-			'check'
-		);
-		$w->myblognumbers->setting(
-			'tag_title',
-			__('Title for tags count:'),
-			__('Tags:'),
-			'text'
-		);
-	}
+    if ($core->plugins->moduleExists('tags')) {
+        # Tag
+        $w->myblognumbers
+            ->setting(
+                'tag_show',
+                __('Show tags count'),
+                1,
+                'check'
+            )
+            ->setting(
+                'tag_title',
+                __('Title for tags count:'),
+                __('Tags:'),
+                'text'
+            );
+    }
 
-	# Users (that post)
-	$w->myblognumbers->setting(
-		'user_show',
-		__('Show users count'),
-		1,
-		'check'
-	);
-	$w->myblognumbers->setting(
-		'user_title',
-		__('Title for users count:'),
-		__('Authors:'),
-		'text'
-	);
+    # Users (that post)
+    $w->myblognumbers
+        ->setting(
+            'user_show',
+            __('Show users count'),
+            1,
+            'check'
+        )
+        ->setting(
+            'user_title',
+            __('Title for users count:'),
+            __('Authors:'),
+            'text'
+        );
 
-	# --BEHAVIOR-- myBlogNumbersWidgetInit
-	$core->callBehavior('myBlogNumbersWidgetInit',$w);
+    # --BEHAVIOR-- myBlogNumbersWidgetInit
+    $core->callBehavior('myBlogNumbersWidgetInit',$w);
 
-	# widget option - page to show on
-	$w->myblognumbers->setting(
-		'homeonly',
-		__('Display on:'),
-		0,
-		'combo',
-		array(
-			__('All pages') => 0,
-			__('Home page only') => 1,
-			__('Except on home page') => 2
-		)
-	);
-	# widget option - content only
-	$w->myblognumbers->setting(
-		'content_only',
-		__('Content only'),
-		0,
-		'check'
-	);
-	# widget option - additionnal CSS
-	$w->myblognumbers->setting(
-		'class',
-		__('CSS class:'),
-		''
-	);
-		$w->myblognumbers->setting('offline',__('Offline'),0,'check');
+    # widget option - page to show on
+    $w->myblognumbers
+        ->addHomeOnly()
+        ->addContentOnly()
+        ->addClass()
+        ->addOffline();
 }

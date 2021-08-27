@@ -1,3 +1,8 @@
+myBlogNumbers 2021.08.27
+- cleanup (PSR2, short array, ...)
+- enhance widget style
+- update license
+
 myBlogNumbers 2015.04.23 - Pierre Van Glabeke
  * modif url support
 
