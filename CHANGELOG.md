@@ -1,25 +1,28 @@
-myBlogNumbers 2021.08.27
+2021.08.27.1 - dev
+- [x] clean up again
+
+2021.08.27
 - cleanup (PSR2, short array, ...)
 - enhance widget style
 - update license
 
-myBlogNumbers 2015.04.23 - Pierre Van Glabeke
- * modif url support
+2015.04.23 - Pierre Van Glabeke
+- modif url support
 
-myBlogNumbers 2015.01.20 - Pierre Van Glabeke
- * Ajout hors ligne dans widget (dc2.7)
- * Corrections typo
+2015.01.20 - Pierre Van Glabeke
+- Ajout hors ligne dans widget (dc2.7)
+- Corrections typo
 
-myBlogNumbers 2013.11.12
- * Use plural form
- * Add options to widgets
+2013.11.12
+- Use plural form
+- Add options to widgets
 
-myBlogNumbers 2013.06.29
- * Used new 'homeonly' option
- * Fixed text for 0 count
+2013.06.29
+- Used new 'homeonly' option
+- Fixed text for 0 count
 
-myBlogNumbers 0.2 - 2010-06-05
- * Switched to DC 2.2
+0.2 - 2010-06-05
+- Switched to DC 2.2
 
-myBlogNumbers 0.1 - 2009-10-16
- * First lab release
+0.1 - 2009-10-16
+- First lab release
