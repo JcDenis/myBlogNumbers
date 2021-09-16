@@ -19,7 +19,7 @@ $this->registerModule(
     'My blog numbers',
     'Show some figures of your blog',
     'Jean-Christian Denis, Pierre Van Glabeke',
-    '2021.08.27.1',
+    '2021.09.017',
     [
         'requires' => [['core', '2.19']],
         'permissions' => 'usage,contentadmin',

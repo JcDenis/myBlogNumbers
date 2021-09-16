@@ -1,10 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
 <module id="myBlogNumbers">
-<name>Mon blog en chiffres</name>
-<version>2021.08.27.1</version>
+<name>My blog numbers</name>
+<version>2021.09.017</version>
 <author>Jean-Christian Denis, Pierre Van Glabeke</author>
 <desc>Show some figures of your blog</desc>
-<file>https://github.com/JcDenis/myBlogNumbers/releases/download/v2021.08.27.1/plugin-myBlogNumbers.zip</file>
+<file>https://github.com/JcDenis/myBlogNumbers/releases/download/v2021.09.017/plugin-myBlogNumbers.zip</file>
+<da:dcmin>2.19</da:dcmin>
 <da:details>http://plugins.dotaddict.org/dc2/details/myBlogNumbers</da:details>
 <da:support>http://forum.dotclear.org/viewtopic.php?id=40934</da:support>
 </module>
