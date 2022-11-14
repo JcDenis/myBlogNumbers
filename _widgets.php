@@ -1,26 +1,23 @@
 <?php
 /**
  * @brief myBlogNumbers, a plugin for Dotclear 2
- * 
+ *
  * @package Dotclear
  * @subpackage Plugin
- * 
+ *
  * @author Jean-Christian Denis, Pierre Van Glabeke
- * 
+ *
  * @copyright Jean-Christian Denis
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
 if (!defined('DC_RC_PATH')) {
     return null;
 }
 
-$core->addBehavior('initWidgets', 'myBlogNumbersWidgetAdmin');
+dcCore::app()->addBehavior('initWidgets', 'myBlogNumbersWidgetAdmin');
 
 function myBlogNumbersWidgetAdmin($w)
 {
-    global $core;
-
     $w
         ->create(
             'myblognumbers',
@@ -87,7 +84,7 @@ function myBlogNumbersWidgetAdmin($w)
             'text'
         );
 
-    if ($core->plugins->moduleExists('tags')) {
+    if (dcCore::app()->plugins->moduleExists('tags')) {
         # Tag
         $w->myblognumbers
             ->setting(
@@ -120,7 +117,7 @@ function myBlogNumbersWidgetAdmin($w)
         );
 
     # --BEHAVIOR-- myBlogNumbersWidgetInit
-    $core->callBehavior('myBlogNumbersWidgetInit',$w);
+    dcCore::app()->callBehavior('myBlogNumbersWidgetInit', $w);
 
     # widget option - page to show on
     $w->myblognumbers
