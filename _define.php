@@ -18,7 +18,7 @@ $this->registerModule(
     'My blog numbers',
     'Show some figures of your blog',
     'Jean-Christian Denis, Pierre Van Glabeke',
-    '2022.11.12',
+    '2022.11.20',
     [
         'requires'    => [['core', '2.24']],
         'permissions' => dcCore::app()->auth->makePermissions([
