@@ -26,8 +26,7 @@ function myBlogNumbersWidgetPublic($w)
         return;
     }
 
-    if (($w->homeonly == 1 && !dcCore::app()->url->isHome(dcCore::app()->url->type))
-     || ($w->homeonly == 2 && dcCore::app()->url->isHome(dcCore::app()->url->type))) {
+    if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
         return null;
     }
 
