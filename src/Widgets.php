@@ -16,9 +16,9 @@ namespace Dotclear\Plugin\myBlogNumbers;
 
 use dcCore;
 use dcMeta;
+use Dotclear\Helper\Html\Html;
 use Dotclear\Plugin\widgets\WidgetsStack;
 use Dotclear\Plugin\widgets\WidgetsElement;
-use html;
 
 class Widgets
 {
@@ -150,7 +150,7 @@ class Widgets
         # Entry
         if ($w->entry_show) {
             $title = $w->entry_title ?
-                sprintf($s_title, html::escapeHTML($w->entry_title)) : '';
+                sprintf($s_title, Html::escapeHTML($w->entry_title)) : '';
 
             $count = (int) dcCore::app()->blog->getPosts([], true)->f(0);
 
@@ -164,7 +164,7 @@ class Widgets
         # Cat
         if ($w->cat_show) {
             $title = $w->cat_title ?
-                sprintf($s_title, html::escapeHTML($w->cat_title)) : '';
+                sprintf($s_title, Html::escapeHTML($w->cat_title)) : '';
 
             $count = dcCore::app()->blog->getCategories([])->count();
 
@@ -178,7 +178,7 @@ class Widgets
         # Comment
         if ($w->comment_show) {
             $title = $w->comment_title ?
-                sprintf($s_title, html::escapeHTML($w->comment_title)) : '';
+                sprintf($s_title, Html::escapeHTML($w->comment_title)) : '';
 
             $params = [
                 'post_type'         => 'post',
@@ -197,7 +197,7 @@ class Widgets
         # Trackback
         if ($w->trackback_show) {
             $title = $w->trackback_title ?
-                sprintf($s_title, html::escapeHTML($w->trackback_title)) : '';
+                sprintf($s_title, Html::escapeHTML($w->trackback_title)) : '';
 
             $params = [
                 'post_type'         => 'post',
@@ -216,7 +216,7 @@ class Widgets
         # Tag
         if (dcCore::app()->plugins->moduleExists('tags') && $w->tag_show) {
             $title = $w->tag_title ?
-                sprintf($s_title, html::escapeHTML($w->tag_title)) : '';
+                sprintf($s_title, Html::escapeHTML($w->tag_title)) : '';
 
             $count = (int) dcCore::app()->con->select(
                 'SELECT count(M.meta_id) AS count ' .
@@ -236,7 +236,7 @@ class Widgets
         # User (that post)
         if ($w->user_show) {
             $title = $w->user_title ?
-                sprintf($s_title, html::escapeHTML($w->user_title)) : '';
+                sprintf($s_title, Html::escapeHTML($w->user_title)) : '';
 
             $count = dcCore::app()->blog->getPostsUsers('post')->count();
 
@@ -260,7 +260,7 @@ class Widgets
             (bool) $w->content_only,
             'myblognumbers ' . $w->class,
             '',
-            ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) : '') .
+            ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) : '') .
                 sprintf('<ul>%s</ul>', $content . $addons)
         );
     }
