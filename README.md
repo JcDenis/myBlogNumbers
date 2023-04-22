@@ -3,7 +3,7 @@
 [![Release](https://img.shields.io/github/v/release/JcDenis/myBlogNumbers)](https://github.com/JcDenis/myBlogNumbers/releases)
 [![Date](https://img.shields.io/github/release-date/JcDenis/myBlogNumbers)](https://github.com/JcDenis/myBlogNumbers/releases)
 [![Issues](https://img.shields.io/github/issues/JcDenis/myBlogNumbers)](https://github.com/JcDenis/myBlogNumbers/issues)
-[![Dotclear](https://img.shields.io/badge/dotclear-v2.25-blue.svg)](https://fr.dotclear.org/download)
+[![Dotclear](https://img.shields.io/badge/dotclear-v2.26-blue.svg)](https://fr.dotclear.org/download)
 [![Dotaddict](https://img.shields.io/badge/dotaddict-official-green.svg)](https://plugins.dotaddict.org/dc2/details/myBlogNumbers)
 [![License](https://img.shields.io/github/license/JcDenis/myBlogNumbers)](https://github.com/JcDenis/myBlogNumbers/blob/master/LICENSE)
 
@@ -19,7 +19,7 @@ Simply show visitors some statistics about current blog.
  _myBlogNumbers_ requires: 
 
   * permissions to manage widgets
-  * Dotclear 2.25
+  * Dotclear 2.26
 
 ## USAGE
 
