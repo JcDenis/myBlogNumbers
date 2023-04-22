@@ -135,17 +135,13 @@ class Widgets
 
     public static function frontendWidget(WidgetsElement $w): string
     {
+        if (is_null(dcCore::app()->blog) || $w->offline || !$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
+        }
+
         $content = $addons = '';
         $s_line  = '<li>%s%s</li>';
         $s_title = '<strong>%s</strong> ';
-
-        if ($w->offline) {
-            return '';
-        }
-
-        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
-            return '';
-        }
 
         # Entry
         if ($w->entry_show) {
