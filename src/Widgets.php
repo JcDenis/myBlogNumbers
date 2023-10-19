@@ -1,25 +1,21 @@
 <?php
-/**
- * @brief myBlogNumbers, a plugin for Dotclear 2
- *
- * @package Dotclear
- * @subpackage Plugin
- *
- * @author Jean-Christian Denis, Pierre Van Glabeke
- *
- * @copyright Jean-Christian Denis
- * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
- */
+
 declare(strict_types=1);
 
 namespace Dotclear\Plugin\myBlogNumbers;
 
-use dcCore;
-use dcMeta;
+use Dotclear\App;
 use Dotclear\Helper\Html\Html;
 use Dotclear\Plugin\widgets\WidgetsStack;
 use Dotclear\Plugin\widgets\WidgetsElement;
 
+/**
+ * @brief       myBlogNumbers widgets class.
+ * @ingroup     myBlogNumbers
+ *
+ * @author      Jean-Christian Denis (author)
+ * @copyright   GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
+ */
 class Widgets
 {
     public static function initWidgets(WidgetsStack $w): void
@@ -28,7 +24,7 @@ class Widgets
             ->create(
                 'myblognumbers',
                 __('My blog numbers'),
-                [self::class, 'frontendWidget'],
+                self::frontendWidget(...),
                 null,
                 __('Show some figures of your blog')
             )
@@ -90,7 +86,7 @@ class Widgets
                 'text'
             );
 
-        if (dcCore::app()->plugins->moduleExists('tags')) {
+        if (App::plugins()->moduleExists('tags')) {
             # Tag
             $w->myblognumbers
                 ->setting(
@@ -123,7 +119,7 @@ class Widgets
             );
 
         # --BEHAVIOR-- myBlogNumbersWidgetInit
-        dcCore::app()->callBehavior('myBlogNumbersWidgetInit', $w);
+        App::behavior()->callBehavior('myBlogNumbersWidgetInit', $w);
 
         # widget option - page to show on
         $w->myblognumbers
@@ -135,7 +131,10 @@ class Widgets
 
     public static function frontendWidget(WidgetsElement $w): string
     {
-        if (is_null(dcCore::app()->blog) || $w->offline || !$w->checkHomeOnly(dcCore::app()->url->type)) {
+        if (!App::blog()->isDefined()
+            || $w->offline
+            || !$w->checkHomeOnly(App::url()->type)
+        ) {
             return '';
         }
 
@@ -148,7 +147,7 @@ class Widgets
             $title = $w->entry_title ?
                 sprintf($s_title, Html::escapeHTML($w->entry_title)) : '';
 
-            $count = (int) dcCore::app()->blog->getPosts([], true)->f(0);
+            $count = (int) App::blog()->getPosts([], true)->f(0);
 
             $text = $count == 0 ?
                 sprintf(__('no entries'), $count) :
@@ -162,7 +161,7 @@ class Widgets
             $title = $w->cat_title ?
                 sprintf($s_title, Html::escapeHTML($w->cat_title)) : '';
 
-            $count = dcCore::app()->blog->getCategories([])->count();
+            $count = App::blog()->getCategories([])->count();
 
             $text = $count == 0 ?
                 sprintf(__('no categories'), $count) :
@@ -181,7 +180,7 @@ class Widgets
                 'comment_status'    => 1,
                 'comment_trackback' => 0,
             ];
-            $count = (int) dcCore::app()->blog->getComments($params, true)->f(0);
+            $count = (int) App::blog()->getComments($params, true)->f(0);
 
             $text = $count == 0 ?
                 sprintf(__('no comments'), $count) :
@@ -200,7 +199,7 @@ class Widgets
                 'comment_status'    => 1,
                 'comment_trackback' => 1,
             ];
-            $count = (int) dcCore::app()->blog->getComments($params, true)->f(0);
+            $count = (int) App::blog()->getComments($params, true)->f(0);
 
             $text = $count == 0 ?
                 sprintf(__('no trackbacks'), $count) :
@@ -210,16 +209,16 @@ class Widgets
         }
 
         # Tag
-        if (dcCore::app()->plugins->moduleExists('tags') && $w->tag_show) {
+        if (App::plugins()->moduleExists('tags') && $w->tag_show) {
             $title = $w->tag_title ?
                 sprintf($s_title, Html::escapeHTML($w->tag_title)) : '';
 
-            $count = (int) dcCore::app()->con->select(
+            $count = (int) App::con()->select(
                 'SELECT count(M.meta_id) AS count ' .
-                'FROM ' . dcCore::app()->prefix . dcMeta::META_TABLE_NAME . ' M ' .
-                'LEFT JOIN ' . dcCore::app()->prefix . 'post P ON P.post_id=M.post_id ' .
+                'FROM ' . App::con()->prefix() . App::meta()::META_TABLE_NAME . ' M ' .
+                'LEFT JOIN ' . App::con()->prefix() . 'post P ON P.post_id=M.post_id ' .
                 "WHERE M.meta_type='tag' " .
-                "AND P.blog_id='" . dcCore::app()->blog->id . "' "
+                "AND P.blog_id='" . App::blog()->id() . "' "
             )->f(0);
 
             $text = $count == 0 ?
@@ -234,7 +233,7 @@ class Widgets
             $title = $w->user_title ?
                 sprintf($s_title, Html::escapeHTML($w->user_title)) : '';
 
-            $count = dcCore::app()->blog->getPostsUsers('post')->count();
+            $count = App::blog()->getPostsUsers('post')->count();
 
             $text = $count == 0 ?
                 sprintf(__('no author'), $count) :
@@ -244,7 +243,7 @@ class Widgets
         }
 
         # --BEHAVIOR-- myBlogNumbersWidgetParse
-        $addons = dcCore::app()->callBehavior('myBlogNumbersWidgetParse', $w);
+        $addons = App::behavior()->callBehavior('myBlogNumbersWidgetParse', $w);
 
         # Nothing to display
         if (!$content && !$addons) {

@@ -1,25 +1,22 @@
 # README
 
-[![Release](https://img.shields.io/badge/release-2023.08.13-a2cbe9.svg)](https://git.dotclear.watch/JcDenis/myBlogNumber/releases)
-[![Date](https://img.shields.io/badge/date-2023.08.13-c44d58.svg)](https://git.dotclear.watch/JcDenis/myBlogNumber/releases)
-[![Dotclear](https://img.shields.io/badge/dotclear-v2.27-137bbb.svg)](https://fr.dotclear.org/download)
+[![Release](https://img.shields.io/badge/release-2023.10.19-a2cbe9.svg)](https://git.dotclear.watch/JcDenis/myBlogNumber/releases)
+![Date](https://img.shields.io/badge/date-2023.10.19-c44d58.svg)
+[![Dotclear](https://img.shields.io/badge/dotclear-v2.28-137bbb.svg)](https://fr.dotclear.org/download)
 [![Dotaddict](https://img.shields.io/badge/dotaddict-official-9ac123.svg)](https://plugins.dotaddict.org/dc2/details/myBlogNumber)
-[![License](https://img.shields.io/github/license/JcDenis/myBlogNumber)](https://git.dotclear.watch/JcDenis/myBlogNumber/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-GPL--2.0-ececec.svg)](https://git.dotclear.watch/JcDenis/myBlogNumber/src/branch/master/LICENSE)
 
-## WHAT IS MYBLOGNUMBERS ?
+## ABOUT
 
-"My Blog Numbers" is a plugin for the open-source 
-web publishing software called Dotclear.
+_myBlogNumber_ is a plugin for the open-source web publishing software called [Dotclear](https://www.dotclear.org).
 
-Simply show visitors some statistics about current blog.
+> Show visitors some statistics about current blog.
 
 ## REQUIREMENTS
 
-_myBlogNumbers_ requires: 
-
-* permissions to manage widgets
-* Dotclear 2.27
-* PHP 7.4+
+* Dotclear 2.28
+* PHP 8.1+
+* Dotclear permissions to manage widgets
 
 ## USAGE
 
@@ -31,14 +28,15 @@ You can add a dashboard item by enable it from your dashboard preferences.
 
 ## LINKS
 
-* License : [GNU GPL v2](https://www.gnu.org/licenses/old-licenses/lgpl-2.0.html)
-* Source & contribution : [Gitea Page](https://git.dotclear.watch/JcDenis/myBlogNumber) or [GitHub Page](https://github.com/JcDenis/myBlogNumber)
-* Packages & details: [Gitea Page](https://git.dotclear.watch/JcDenis/myBlogNumber/releases) or [Dotaddict Page](https://plugins.dotaddict.org/dc2/details/myBlogNumber)
-* Discuss and help : [Dotclear Forum](http://forum.dotclear.org/viewtopic.php?id=40934)
+* [License](https://git.dotclear.watch/JcDenis/myBlogNumber/src/branch/master/LICENSE)
+* [Packages & details](https://git.dotclear.watch/JcDenis/myBlogNumber/releases) (or on [Dotaddict](https://plugins.dotaddict.org/dc2/details/myBlogNumber))
+* [Sources & contributions](https://git.dotclear.watch/JcDenis/myBlogNumber) (or on [GitHub](https://github.com/JcDenis/myBlogNumber))
+* [Issues & security](https://git.dotclear.watch/JcDenis/myBlogNumber/issues) (or on [GitHub](https://github.com/JcDenis/myBlogNumber/issues))
+* [Discuss & help](http://forum.dotclear.org/viewtopic.php?id=40934)
 
 ## CONTRIBUTORS
 
-* Jean-Christian Denis
+* Jean-Christian Denis (author)
 * Pierre Van Glabeke
 
 You are welcome to contribute to this code.
