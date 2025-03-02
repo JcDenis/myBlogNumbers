@@ -4,7 +4,7 @@
 ![Date](https://img.shields.io/badge/date-2023.10.19-c44d58.svg)
 [![Dotclear](https://img.shields.io/badge/dotclear-v2.28-137bbb.svg)](https://fr.dotclear.org/download)
 [![Dotaddict](https://img.shields.io/badge/dotaddict-official-9ac123.svg)](https://plugins.dotaddict.org/dc2/details/myBlogNumber)
-[![License](https://img.shields.io/badge/license-GPL--2.0-ececec.svg)](https://github.com/JcDenis/myBlogNumber/src/branch/master/LICENSE)
+[![License](https://img.shields.io/badge/license-GPL--2.0-ececec.svg)](https://github.com/JcDenis/myBlogNumber/blob/master/LICENSE)
 
 ## ABOUT
 
@@ -28,7 +28,7 @@ You can add a dashboard item by enable it from your dashboard preferences.
 
 ## LINKS
 
-* [License](https://github.com/JcDenis/myBlogNumber/src/branch/master/LICENSE)
+* [License](https://github.com/JcDenis/myBlogNumber/blob/master/LICENSE)
 * [Packages & details](https://github.com/JcDenis/myBlogNumber/releases) (or on [Dotaddict](https://plugins.dotaddict.org/dc2/details/myBlogNumber))
 * [Sources & contributions](https://github.com/JcDenis/myBlogNumber)
 * [Issues & security](https://github.com/JcDenis/myBlogNumber/issues)
