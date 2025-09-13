@@ -1,5 +1,10 @@
 myBlogNumbers 2025.03.02
 ===========================================================
+* Bump Dotclear from 2.28 to 2.36
+* Code review
+
+myBlogNumbers 2025.03.02
+===========================================================
 * Require Dotclear 2.28
 * Require PHP 8.1
 * Fix repository URLs
