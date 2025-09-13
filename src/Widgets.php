@@ -88,7 +88,7 @@ class Widgets
 
         if (App::plugins()->moduleExists('tags')) {
             # Tag
-            $w->myblognumbers
+            $w->get('myblognumbers')
                 ->setting(
                     'tag_show',
                     __('Show tags count'),
@@ -104,7 +104,7 @@ class Widgets
         }
 
         # Users (that post)
-        $w->myblognumbers
+        $w->get('myblognumbers')
             ->setting(
                 'user_show',
                 __('Show users count'),
@@ -122,7 +122,7 @@ class Widgets
         App::behavior()->callBehavior('myBlogNumbersWidgetInit', $w);
 
         # widget option - page to show on
-        $w->myblognumbers
+        $w->get('myblognumbers')
             ->addHomeOnly()
             ->addContentOnly()
             ->addClass()
@@ -132,7 +132,7 @@ class Widgets
     public static function frontendWidget(WidgetsElement $w): string
     {
         if (!App::blog()->isDefined()
-            || $w->offline
+            || $w->get('offline')
             || !$w->checkHomeOnly(App::url()->type)
         ) {
             return '';
@@ -143,9 +143,9 @@ class Widgets
         $s_title = '<strong>%s</strong> ';
 
         # Entry
-        if ($w->entry_show) {
-            $title = $w->entry_title ?
-                sprintf($s_title, Html::escapeHTML($w->entry_title)) : '';
+        if ($w->get('entry_show')) {
+            $title = $w->get('entry_title') ?
+                sprintf($s_title, Html::escapeHTML($w->get('entry_title'))) : '';
 
             $count = (int) App::blog()->getPosts([], true)->f(0);
 
@@ -157,9 +157,9 @@ class Widgets
         }
 
         # Cat
-        if ($w->cat_show) {
-            $title = $w->cat_title ?
-                sprintf($s_title, Html::escapeHTML($w->cat_title)) : '';
+        if ($w->get('cat_show')) {
+            $title = $w->get('cat_title') ?
+                sprintf($s_title, Html::escapeHTML($w->get('cat_title'))) : '';
 
             $count = App::blog()->getCategories([])->count();
 
@@ -171,9 +171,9 @@ class Widgets
         }
 
         # Comment
-        if ($w->comment_show) {
-            $title = $w->comment_title ?
-                sprintf($s_title, Html::escapeHTML($w->comment_title)) : '';
+        if ($w->get('comment_show')) {
+            $title = $w->get('comment_title') ?
+                sprintf($s_title, Html::escapeHTML($w->get('comment_title'))) : '';
 
             $params = [
                 'post_type'         => 'post',
@@ -190,9 +190,9 @@ class Widgets
         }
 
         # Trackback
-        if ($w->trackback_show) {
-            $title = $w->trackback_title ?
-                sprintf($s_title, Html::escapeHTML($w->trackback_title)) : '';
+        if ($w->get('trackback_show')) {
+            $title = $w->get('trackback_title') ?
+                sprintf($s_title, Html::escapeHTML($w->get('trackback_title'))) : '';
 
             $params = [
                 'post_type'         => 'post',
@@ -209,14 +209,14 @@ class Widgets
         }
 
         # Tag
-        if (App::plugins()->moduleExists('tags') && $w->tag_show) {
-            $title = $w->tag_title ?
-                sprintf($s_title, Html::escapeHTML($w->tag_title)) : '';
+        if (App::plugins()->moduleExists('tags') && $w->get('tag_show')) {
+            $title = $w->get('tag_title') ?
+                sprintf($s_title, Html::escapeHTML($w->get('tag_title'))) : '';
 
-            $count = (int) App::con()->select(
+            $count = (int) App::db()->con()->select(
                 'SELECT count(M.meta_id) AS count ' .
-                'FROM ' . App::con()->prefix() . App::meta()::META_TABLE_NAME . ' M ' .
-                'LEFT JOIN ' . App::con()->prefix() . 'post P ON P.post_id=M.post_id ' .
+                'FROM ' . App::db()->con()->prefix() . App::meta()::META_TABLE_NAME . ' M ' .
+                'LEFT JOIN ' . App::db()->con()->prefix() . 'post P ON P.post_id=M.post_id ' .
                 "WHERE M.meta_type='tag' " .
                 "AND P.blog_id='" . App::blog()->id() . "' "
             )->f(0);
@@ -229,9 +229,9 @@ class Widgets
         }
 
         # User (that post)
-        if ($w->user_show) {
-            $title = $w->user_title ?
-                sprintf($s_title, Html::escapeHTML($w->user_title)) : '';
+        if ($w->get('user_show')) {
+            $title = $w->get('user_title') ?
+                sprintf($s_title, Html::escapeHTML($w->get('user_title'))) : '';
 
             $count = App::blog()->getPostsUsers('post')->count();
 
@@ -252,10 +252,10 @@ class Widgets
 
         # Display
         return $w->renderDiv(
-            (bool) $w->content_only,
-            'myblognumbers ' . $w->class,
+            (bool) $w->get('content_only'),
+            'myblognumbers ' . $w->get('class'),
             '',
-            ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) : '') .
+            ($w->get('title') ? $w->renderTitle(Html::escapeHTML($w->get('title'))) : '') .
                 sprintf('<ul>%s</ul>', $content . $addons)
         );
     }
