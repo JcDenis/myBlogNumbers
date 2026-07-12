@@ -27,7 +27,15 @@ class Widgets
                 self::frontendWidget(...),
                 null,
                 __('Show some figures of your blog')
-            )
+            );
+
+
+        $_ = $w->get('myblognumbers');
+        if (!($_ instanceof WidgetsElement)) {
+            return;
+        }
+
+        $_
             ->addTitle(__('My blog numbers'))
 
             # Entry
@@ -88,7 +96,7 @@ class Widgets
 
         if (App::plugins()->moduleExists('tags')) {
             # Tag
-            $w->get('myblognumbers')
+            $_
                 ->setting(
                     'tag_show',
                     __('Show tags count'),
@@ -104,7 +112,7 @@ class Widgets
         }
 
         # Users (that post)
-        $w->get('myblognumbers')
+        $_
             ->setting(
                 'user_show',
                 __('Show users count'),
@@ -122,7 +130,7 @@ class Widgets
         App::behavior()->callBehavior('myBlogNumbersWidgetInit', $w);
 
         # widget option - page to show on
-        $w->get('myblognumbers')
+        $_
             ->addHomeOnly()
             ->addContentOnly()
             ->addClass()
@@ -133,7 +141,7 @@ class Widgets
     {
         if (!App::blog()->isDefined()
             || $w->get('offline')
-            || !$w->checkHomeOnly(App::url()->type)
+            || !$w->checkHomeOnly(App::url()->getType())
         ) {
             return '';
         }
@@ -144,10 +152,10 @@ class Widgets
 
         # Entry
         if ($w->get('entry_show')) {
-            $title = $w->get('entry_title') ?
+            $title = is_string($w->get('entry_title')) ?
                 sprintf($s_title, Html::escapeHTML($w->get('entry_title'))) : '';
 
-            $count = (int) App::blog()->getPosts([], true)->f(0);
+            $count = App::blog()->getPosts([], true)->cardinal();
 
             $text = $count == 0 ?
                 sprintf(__('no entries'), $count) :
@@ -158,7 +166,7 @@ class Widgets
 
         # Cat
         if ($w->get('cat_show')) {
-            $title = $w->get('cat_title') ?
+            $title = is_string($w->get('cat_title')) ?
                 sprintf($s_title, Html::escapeHTML($w->get('cat_title'))) : '';
 
             $count = App::blog()->getCategories([])->count();
@@ -172,7 +180,7 @@ class Widgets
 
         # Comment
         if ($w->get('comment_show')) {
-            $title = $w->get('comment_title') ?
+            $title = is_string($w->get('comment_title')) ?
                 sprintf($s_title, Html::escapeHTML($w->get('comment_title'))) : '';
 
             $params = [
@@ -180,7 +188,7 @@ class Widgets
                 'comment_status'    => 1,
                 'comment_trackback' => 0,
             ];
-            $count = (int) App::blog()->getComments($params, true)->f(0);
+            $count = App::blog()->getComments($params, true)->cardinal();
 
             $text = $count == 0 ?
                 sprintf(__('no comments'), $count) :
@@ -191,7 +199,7 @@ class Widgets
 
         # Trackback
         if ($w->get('trackback_show')) {
-            $title = $w->get('trackback_title') ?
+            $title = is_string($w->get('trackback_title')) ?
                 sprintf($s_title, Html::escapeHTML($w->get('trackback_title'))) : '';
 
             $params = [
@@ -199,7 +207,7 @@ class Widgets
                 'comment_status'    => 1,
                 'comment_trackback' => 1,
             ];
-            $count = (int) App::blog()->getComments($params, true)->f(0);
+            $count = App::blog()->getComments($params, true)->cardinal();
 
             $text = $count == 0 ?
                 sprintf(__('no trackbacks'), $count) :
@@ -210,16 +218,17 @@ class Widgets
 
         # Tag
         if (App::plugins()->moduleExists('tags') && $w->get('tag_show')) {
-            $title = $w->get('tag_title') ?
+            $title = is_string($w->get('tag_title')) ?
                 sprintf($s_title, Html::escapeHTML($w->get('tag_title'))) : '';
 
-            $count = (int) App::db()->con()->select(
+            $count = App::db()->con()->select(
                 'SELECT count(M.meta_id) AS count ' .
                 'FROM ' . App::db()->con()->prefix() . App::meta()::META_TABLE_NAME . ' M ' .
                 'LEFT JOIN ' . App::db()->con()->prefix() . 'post P ON P.post_id=M.post_id ' .
                 "WHERE M.meta_type='tag' " .
                 "AND P.blog_id='" . App::blog()->id() . "' "
             )->f(0);
+            $count = is_numeric($count) ? (int) $count : 0;
 
             $text = $count == 0 ?
                 sprintf(__('no tags'), $count) :
@@ -230,7 +239,7 @@ class Widgets
 
         # User (that post)
         if ($w->get('user_show')) {
-            $title = $w->get('user_title') ?
+            $title = is_string($w->get('user_title')) ?
                 sprintf($s_title, Html::escapeHTML($w->get('user_title'))) : '';
 
             $count = App::blog()->getPostsUsers('post')->count();
@@ -253,9 +262,9 @@ class Widgets
         # Display
         return $w->renderDiv(
             (bool) $w->get('content_only'),
-            'myblognumbers ' . $w->get('class'),
+            'myblognumbers ' . (is_string($w->get('class')) ? $w->get('class') : ''),
             '',
-            ($w->get('title') ? $w->renderTitle(Html::escapeHTML($w->get('title'))) : '') .
+            (is_string($w->get('title')) ? $w->renderTitle(Html::escapeHTML($w->get('title'))) : '') .
                 sprintf('<ul>%s</ul>', $content . $addons)
         );
     }
