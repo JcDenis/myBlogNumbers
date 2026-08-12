@@ -1,4 +1,4 @@
-myBlogNumbers xxxx.xx.xx
+myBlogNumbers 2026.08.12
 ===========================================================
 * Bump Dotclear from 2.36 to 2.39
 
