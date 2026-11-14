@@ -7,7 +7,7 @@
     <desc>Show some figures of your blog</desc>
     <file>https://github.com/JcDenis/myBlogNumbers/releases/download/v2026.08.12/plugin-myBlogNumbers.zip</file>
     <da:dcmin>2.39</da:dcmin>
-    <da:details>https://github.com/JcDenis/myBlogNumbers/src/branch/master/README.md</da:details>
+    <da:details>https://github.com/JcDenis/myBlogNumbers/blob/master/README.md</da:details>
     <da:support>https://github.com/JcDenis/myBlogNumbers/issues</da:support>
   </module>
 </modules>
