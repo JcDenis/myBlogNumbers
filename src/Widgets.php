@@ -148,12 +148,10 @@ class Widgets
 
         $content = $addons = '';
         $s_line  = '<li>%s%s</li>';
-        $s_title = '<strong>%s</strong> ';
 
         # Entry
         if ($w->get('entry_show')) {
-            $title = is_string($w->get('entry_title')) ?
-                sprintf($s_title, Html::escapeHTML($w->get('entry_title'))) : '';
+            $title = self::label($w->get('entry_title'));
 
             $count = App::blog()->getPosts([], true)->cardinal();
 
@@ -166,8 +164,7 @@ class Widgets
 
         # Cat
         if ($w->get('cat_show')) {
-            $title = is_string($w->get('cat_title')) ?
-                sprintf($s_title, Html::escapeHTML($w->get('cat_title'))) : '';
+            $title = self::label($w->get('cat_title'));
 
             $count = App::blog()->getCategories([])->count();
 
@@ -180,8 +177,7 @@ class Widgets
 
         # Comment
         if ($w->get('comment_show')) {
-            $title = is_string($w->get('comment_title')) ?
-                sprintf($s_title, Html::escapeHTML($w->get('comment_title'))) : '';
+            $title = self::label($w->get('comment_title'));
 
             $params = [
                 'post_type'         => 'post',
@@ -199,8 +195,7 @@ class Widgets
 
         # Trackback
         if ($w->get('trackback_show')) {
-            $title = is_string($w->get('trackback_title')) ?
-                sprintf($s_title, Html::escapeHTML($w->get('trackback_title'))) : '';
+            $title = self::label($w->get('trackback_title'));
 
             $params = [
                 'post_type'         => 'post',
@@ -218,15 +213,14 @@ class Widgets
 
         # Tag
         if (App::plugins()->moduleExists('tags') && $w->get('tag_show')) {
-            $title = is_string($w->get('tag_title')) ?
-                sprintf($s_title, Html::escapeHTML($w->get('tag_title'))) : '';
+            $title = self::label($w->get('tag_title'));
 
             $count = App::db()->con()->select(
-                'SELECT count(M.meta_id) AS count ' .
+                'SELECT COUNT(DISTINCT M.meta_id) AS count ' .
                 'FROM ' . App::db()->con()->prefix() . App::meta()::META_TABLE_NAME . ' M ' .
                 'LEFT JOIN ' . App::db()->con()->prefix() . 'post P ON P.post_id=M.post_id ' .
                 "WHERE M.meta_type='tag' " .
-                "AND P.blog_id='" . App::blog()->id() . "' "
+                "AND P.blog_id='" . App::db()->con()->escapeStr(App::blog()->id()) . "'"
             )->f(0);
             $count = is_numeric($count) ? (int) $count : 0;
 
@@ -239,8 +233,7 @@ class Widgets
 
         # User (that post)
         if ($w->get('user_show')) {
-            $title = is_string($w->get('user_title')) ?
-                sprintf($s_title, Html::escapeHTML($w->get('user_title'))) : '';
+            $title = self::label($w->get('user_title'));
 
             $count = App::blog()->getPostsUsers('post')->count();
 
@@ -264,8 +257,16 @@ class Widgets
             (bool) $w->get('content_only'),
             'myblognumbers ' . (is_string($w->get('class')) ? $w->get('class') : ''),
             '',
-            (is_string($w->get('title')) ? $w->renderTitle(Html::escapeHTML($w->get('title'))) : '') .
+            (is_string($w->get('title')) && $w->get('title') !== '' ? $w->renderTitle(Html::escapeHTML($w->get('title'))) : '') .
                 sprintf('<ul>%s</ul>', $content . $addons)
         );
+    }
+
+    /**
+     * Get a line label, empty if no label.
+     */
+    private static function label(mixed $label): string
+    {
+        return is_string($label) && trim($label) !== '' ? '<strong>' . Html::escapeHTML($label) . '</strong> ' : '';
     }
 }
