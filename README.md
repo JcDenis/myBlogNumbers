@@ -1,14 +1,14 @@
 # README
 
-[![Release](https://img.shields.io/github/v/release/jcdenis/myBlogNumber?color=lightblue)](https://github.com/JcDenis/myBlogNumber/releases)
-![Date](https://img.shields.io/github/release-date/jcdenis/myBlogNumber?color=red)
-[![Dotclear](https://img.shields.io/badge/dotclear-v2.36-137bbb.svg)](https://fr.dotclear.org/download)
-[![Repository](https://img.shields.io/badge/repository-official-9ac123.svg)](https://dotclear.org/plugin/detail/myBlogNumber)
-[![License](https://img.shields.io/github/license/jcdenis/myBlogNumber?color=white)](https://github.com/JcDenis/myBlogNumber/blob/master/LICENSE)
+[![Release](https://img.shields.io/github/v/release/jcdenis/myBlogNumbers?color=lightblue)](https://github.com/JcDenis/myBlogNumbers/releases)
+![Date](https://img.shields.io/github/release-date/jcdenis/myBlogNumbers?color=red)
+[![Dotclear](https://img.shields.io/badge/dotclear-v2.39-137bbb.svg)](https://fr.dotclear.org/download)
+[![Repository](https://img.shields.io/badge/repository-official-9ac123.svg)](https://dotclear.org/plugin/detail/myBlogNumbers)
+[![License](https://img.shields.io/github/license/jcdenis/myBlogNumbers?color=white)](https://github.com/JcDenis/myBlogNumbers/blob/master/LICENSE)
 
 ## ABOUT
 
-_myBlogNumber_ is a plugin for the open-source web publishing software called [Dotclear](https://www.dotclear.org).
+_myBlogNumbers_ is a plugin for the open-source web publishing software called [Dotclear](https://www.dotclear.org).
 
 > Show visitors some statistics about current blog.
 
@@ -20,23 +20,23 @@ _myBlogNumber_ is a plugin for the open-source web publishing software called [D
 
 ## USAGE
 
-First install _myBlogNumbers_, manualy from a zip package or from 
+First install _myBlogNumbers_, manually from a zip package or from 
 Dotclear plugins repository. (See Dotclear's documentation to know how do this)
 
 Add and configure "My Blog Numbers" from widgets manager.
-You can add a dashboard item by enable it from your dashboard preferences.
 
 ## LINKS
 
-* [License](https://github.com/JcDenis/myBlogNumber/blob/master/LICENSE)
-* [Packages & details](https://github.com/JcDenis/myBlogNumber/releases) (or on [Repository](https://dotclear.org/plugin/detail/myBlogNumber))
-* [Sources & contributions](https://github.com/JcDenis/myBlogNumber)
-* [Issues & security](https://github.com/JcDenis/myBlogNumber/issues)
-* [Discuss & help](http://forum.dotclear.org/viewtopic.php?id=40934)
+* [License](https://github.com/JcDenis/myBlogNumbers/blob/master/LICENSE)
+* [Packages & details](https://github.com/JcDenis/myBlogNumbers/releases) (or on [Repository](https://dotclear.org/plugin/detail/myBlogNumbers))
+* [Sources & contributions](https://github.com/JcDenis/myBlogNumbers)
+* [Issues & security](https://github.com/JcDenis/myBlogNumbers/issues)
+* [Discuss & help](https://forum.dotclear.org/viewtopic.php?id=40934)
 
 ## CONTRIBUTORS
 
 * Jean-Christian Denis (author)
 * Pierre Van Glabeke
+* Claude (AI assistant by Anthropic)
 
 You are welcome to contribute to this code.
