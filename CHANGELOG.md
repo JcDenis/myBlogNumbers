@@ -1,3 +1,7 @@
+myBlogNumbers 2026.11.15
+===========================================================
+* [fix] Tags count, empty labels and empty widget title
+
 myBlogNumbers 2026.08.12
 ===========================================================
 * Bump Dotclear from 2.36 to 2.39
