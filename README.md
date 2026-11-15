@@ -12,6 +12,8 @@ _myBlogNumbers_ is a plugin for the open-source web publishing software called [
 
 > Show visitors some statistics about current blog.
 
+A [user guide in French](https://github.com/JcDenis/myBlogNumbers/blob/master/docs/fr/utilisation.md) is available.
+
 ## REQUIREMENTS
 
 * Dotclear 2.39
@@ -27,6 +29,7 @@ Add and configure "My Blog Numbers" from widgets manager.
 
 ## LINKS
 
+* [User guide (in French)](https://github.com/JcDenis/myBlogNumbers/blob/master/docs/fr/utilisation.md)
 * [License](https://github.com/JcDenis/myBlogNumbers/blob/master/LICENSE)
 * [Packages & details](https://github.com/JcDenis/myBlogNumbers/releases) (or on [Repository](https://dotclear.org/plugin/detail/myBlogNumbers))
 * [Sources & contributions](https://github.com/JcDenis/myBlogNumbers)
