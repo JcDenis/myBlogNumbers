@@ -1,6 +1,7 @@
 myBlogNumbers 2026.11.15
 ===========================================================
 * [fix] Tags count, empty labels and empty widget title
+* [docs] Add a user guide in French, with screenshots
 
 myBlogNumbers 2026.08.12
 ===========================================================
