@@ -1,3 +1,8 @@
+myBlogNumbers 2026.11.15.1 - 2026.11.15
+===========================================================
+* [docs] Add a user guide in French, with screenshots
+* [lang] Do not override core translations
+
 myBlogNumbers 2026.11.15
 ===========================================================
 * [fix] Tags count, empty labels and empty widget title
