@@ -1,38 +1,38 @@
 # myBlogNumbers : guide d'utilisation
 
-myBlogNumbers ajoute un gadget qui montre aux visiteurs quelques chiffres de votre blog : nombre de billets, de catégories, de commentaires, de rétroliens, de mots-clés et d'auteurs.
+myBlogNumbers ajoute un widget qui montre aux visiteurs quelques chiffres de votre blog : nombre de billets, de catégories, de commentaires, de rétroliens, de mots-clés et d'auteurs.
 
 ## Table des matières
 
-1. [Ajouter le gadget](#ajouter-le-gadget)
+1. [Ajouter le widget](#ajouter-le-widget)
 2. [Les réglages](#les-réglages)
 3. [Personnaliser l'affichage](#personnaliser-laffichage)
 4. [Bon à savoir](#bon-à-savoir)
 
-## Ajouter le gadget
+## Ajouter le widget
 
-Allez dans **Gadgets**, ajoutez « Mon blog en chiffres » à la zone de votre choix, puis enregistrez.
+Allez dans **Widgets**, ajoutez « Mon blog en chiffres » à la zone de votre choix, puis enregistrez.
 
-Sur le blog, le gadget affiche une ligne par chiffre.
+Sur le blog, le widget affiche une ligne par chiffre.
 
-![Gadget public](img/gadget-public.png)
+![Widget public](img/widget-public.png)
 
 ## Les réglages
 
-Cliquez sur le nom du gadget pour déplier ses réglages (l'exemple ci-dessous a déjà été modifié).
+Cliquez sur le nom du widget pour déplier ses réglages (l'exemple ci-dessous a déjà été modifié).
 
-![Réglages du gadget](img/gadget-reglages.png)
+![Réglages du widget](img/widget-reglages.png)
 
-* **Titre** : le titre du gadget.
+* **Titre** : le titre du widget.
 * Pour chaque chiffre : une case « Afficher le nombre de… » et un champ « Titre pour… » qui est le libellé affiché avant le chiffre.
 * La ligne « mots-clés » n'existe que si le plugin Tags est activé.
-* Les options habituelles des gadgets : pages concernées, contenu seul, classe CSS, hors ligne.
+* Les options habituelles des widgets : pages concernées, contenu seul, classe CSS, hors ligne.
 
 ## Personnaliser l'affichage
 
 Décochez les chiffres que vous ne voulez pas montrer et renommez les libellés. Dans l'exemple, les rétroliens et les mots-clés sont masqués, « Catégories » devient « Rubriques » et le libellé des billets est vidé.
 
-![Gadget personnalisé](img/gadget-personnalise.png)
+![Widget personnalisé](img/widget-personnalise.png)
 
 Les chiffres sont comptés ainsi :
 
